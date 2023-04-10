@@ -140,11 +140,11 @@
                 <td class="tg-p5uh">RESPUESTA</td>
             </tr>
         </thead>
-        <?php
-        while ($filas = mysqli_fetch_assoc($resultado)) {
 
+        <tbody>
+            <?php
+            while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
-            <tbody>
                 <tr>
                     <td class="tg-m1cc" rowspan="8">
                         <?php echo $filas['pieza'] ?>
@@ -161,6 +161,7 @@
                     </td>
                     <td class="tg-zkvm">But if you want your page to remain</td>
                 </tr>
+
                 <tr>
                     <td class="tg-mqa1">MOLDEO</td>
                     <td class="tg-wp8o">
@@ -168,6 +169,7 @@
                     </td>
                     <td class="tg-wp8o">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-fhn1">FUSION</td>
                     <td class="tg-zkvm">
@@ -175,6 +177,7 @@
                     </td>
                     <td class="tg-zkvm">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-mqa1">FLOGGY</td>
                     <td class="tg-wp8o">
@@ -182,6 +185,7 @@
                     </td>
                     <td class="tg-wp8o">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-fhn1">T.T.</td>
                     <td class="tg-zkvm">
@@ -189,6 +193,7 @@
                     </td>
                     <td class="tg-zkvm">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-mqa1">INSPECCION</td>
                     <td class="tg-wp8o">
@@ -196,6 +201,7 @@
                     </td>
                     <td class="tg-wp8o">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-fhn1">FINISHING</td>
                     <td class="tg-zkvm">
@@ -203,6 +209,7 @@
                     </td>
                     <td class="tg-zkvm">But if you want your page to remain</td>
                 </tr>
+                
                 <tr>
                     <td class="tg-mqa1">SCANNER</td>
                     <td class="tg-wp8o">
@@ -211,15 +218,16 @@
                     <td class="tg-wp8o">But if you want your page to remain</td>
 
                 </tr>
+
                 <?php echo "<a href='editar.php?id=" . $filas['id'] . "'>EDITAR</a>"; ?><br>
 
-                <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "'
-                        onclick='return confirmar()'>ELIMINAR</a>"; ?>
+                <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' onclick='return confirmar()'>ELIMINAR</a>"; ?>
+            
+            <?php
+            }
+            ?>
             </tbody>
         </table>
-        <?php
-        }
-        ?>
     <?php
     mysqli_close($conexion);
     ?>
