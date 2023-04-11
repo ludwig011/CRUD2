@@ -1,5 +1,5 @@
 <html>
-<!-- Hola Luis -->
+
 <head>
     <title>PRUEBAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -16,218 +16,146 @@
     <script type="text/javascript">
         function confirmar() {
             return confirm('Estas seguro? se eliminaran los datos');
-
         }
     </script>
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
+        thead tr th {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background-color: #ffffff;
+        }
+
+        .table-responsive {
+            height: 100%;
+            overflow: scroll;
+        }
+
         .tg {
-            border-collapse: collapse;
-            border-color: #93a1a1;
-            border-spacing: 0;
-        }
 
-        .tg td {
-            background-color: #fdf6e3;
-            border-color: #93a1a1;
-            border-style: solid;
-            border-width: 1px;
-            color: #002b36;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            overflow: hidden;
-            padding: 4px 20px;
-            word-break: normal;
-        }
-
-        .tg th {
-            background-color: #657b83;
-            border-color: #93a1a1;
-            border-style: solid;
-            border-width: 1px;
-            color: #fdf6e3;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            font-weight: normal;
-            overflow: hidden;
-            padding: 4px 20px;
-            word-break: normal;
-        }
-
-        .tg .tg-fhn1 {
-            background-color: #eee8d5;
-            border-color: #000000;
-            font-weight: bold;
-            text-align: center;
-            vertical-align: top
-        }
-
-        .tg .tg-p5uh {
-            border-color: #000000;
-            font-size: 16px;
-            font-weight: bold;
-            text-align: center;
-            vertical-align: middle
-        }
-
-        .tg .tg-2xs2 {
-            background-color: #f56b00;
-            border-color: inherit;
-            text-align: center;
-            vertical-align: middle
-        }
-
-        .tg .tg-zkvm {
-            background-color: #eee8d5;
-            border-color: #000000;
-            text-align: center;
-            vertical-align: top
-        }
-
-        .tg .tg-wp8o {
-            border-color: #000000;
-            text-align: center;
-            vertical-align: top
-        }
-
-        .tg .tg-m1cc {
-            background-color: #eee8d5;
             border-color: #000000;
             font-size: 22px;
             font-weight: bold;
             text-align: center;
-            vertical-align: middle
-        }
-
-        .tg .tg-mqa1 {
-            border-color: #000000;
-            font-weight: bold;
-            text-align: center;
-            vertical-align: top
-        }
-
-        .tg .tg-mcqj {
-            border-color: #000000;
-            font-weight: bold;
-            text-align: left;
-            vertical-align: top
-        }
-
-        .tg .tg-73oq {
-            border-color: #000000;
-            text-align: left;
-            vertical-align: top
+            vertical-align: center;
         }
     </style>
 </head>
 
 <body>
-
+    <script scr="js\bootstrap.bundle.min.js"></script>
     <?php
     include("conexion.php");
     $sql = "SELECT * FROM `zonas`;";
     $resultado = mysqli_query($conexion, $sql);
     ?>
-    <h1>LISTADO DE PRUEBAS</h1>
-    <a href="agregar.php">AGREGAR PRUEBA</a><br><br>
-    <table class="tg">
-        <thead>
-            <tr>
-                <td class="tg-p5uh">PIEZA</td>
-                <td class="tg-p5uh">COLADA</td>
-                <td class="tg-p5uh">DUENO</td>
-                <td class="tg-p5uh">AREA</td>
-                <td class="tg-p5uh">DETALLE</td>
-                <td class="tg-p5uh">RESPUESTA</td>
-            </tr>
-        </thead>
+    <h2 class="text-center">LISTADO DE PRUEBAS</h2>
+    <div class="col-auto">
+        <a href="agregar.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i
+                class="fa-solid fa-circle-plus"></i>
+            AGREGAR
+            PRUEBA
+        </a>
+    </div><br><br>
+    <div class="table-responsive">
+        <table class="table table-sm table-bordered table-hover table-striped table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th class="header tg" scope="col">PIEZA</th>
+                    <th class="header tg" scope="col">COLADA</th>
+                    <th class="header tg" scope="col">DUEÑO</th>
+                    <th class="header tg" scope="col">AREA</th>
+                    <th class="header tg" scope="col">DETALLE</th>
+                    <th class="header tg" scope="col">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($filas = mysqli_fetch_assoc($resultado)) {
+                    ?>
+                    <tr>
+                        <td class="tg" rowspan="8">
+                            <?php echo $filas['pieza'] ?>
+                        </td>
+                        <td class="tg" rowspan="8">
+                            <?php echo $filas['colada'] ?>
+                        </td>
+                        <td class="tg" rowspan="8">
+                            <?php echo $filas['dueno'] ?>
+                        </td>
+                        <td>ALMAS</td>
+                        <td>
+                            <?php echo $filas['almas'] ?>
+                        </td>
+                        <td class="tg" rowspan="8">
+                            <?php echo "<a href='editar.php?id=" . $filas['id'] . "' class='btn btn-sn btn-warning'><i class='fa-regular fa-pen-to-square'></i>EDITAR</a>"; ?><br><br>
 
-        <tbody>
-            <?php
-            while ($filas = mysqli_fetch_assoc($resultado)) {
-            ?>
-                <tr>
-                    <td class="tg-m1cc" rowspan="8">
-                        <?php echo $filas['pieza'] ?>
-                    </td>
-                    <td class="tg-m1cc" rowspan="8">
-                        <?php echo $filas['colada'] ?>
-                    </td>
-                    <td class="tg-m1cc" rowspan="8">
-                        <?php echo $filas['dueno'] ?>
-                    </td>
-                    <td class="tg-fhn1">ALMAS</td>
-                    <td class="tg-zkvm">
-                        <?php echo $filas['almas'] ?>
-                    </td>
-                    <td class="tg-zkvm">But if you want your page to remain</td>
-                </tr>
+                            <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' class='btn btn-sn btn-warning' onclick='return confirmar()'><i class='fa-solid fa-trash-can'></i>ELIMINAR</a>"; ?>
+                        </td>
 
-                <tr>
-                    <td class="tg-mqa1">MOLDEO</td>
-                    <td class="tg-wp8o">
-                        <?php echo $filas['moldeo'] ?>
-                    </td>
-                    <td class="tg-wp8o">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-fhn1">FUSION</td>
-                    <td class="tg-zkvm">
-                        <?php echo $filas['fusion'] ?>
-                    </td>
-                    <td class="tg-zkvm">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-mqa1">FLOGGY</td>
-                    <td class="tg-wp8o">
-                        <?php echo $filas['floggy'] ?>
-                    </td>
-                    <td class="tg-wp8o">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-fhn1">T.T.</td>
-                    <td class="tg-zkvm">
-                        <?php echo $filas['tratamientos'] ?>
-                    </td>
-                    <td class="tg-zkvm">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-mqa1">INSPECCION</td>
-                    <td class="tg-wp8o">
-                        <?php echo $filas['inspeccion'] ?>
-                    </td>
-                    <td class="tg-wp8o">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-fhn1">FINISHING</td>
-                    <td class="tg-zkvm">
-                        <?php echo $filas['finishing'] ?>
-                    </td>
-                    <td class="tg-zkvm">But if you want your page to remain</td>
-                </tr>
-                
-                <tr>
-                    <td class="tg-mqa1">SCANNER</td>
-                    <td class="tg-wp8o">
-                        <?php echo $filas['cmm'] ?>
-                    </td>
-                    <td class="tg-wp8o">But if you want your page to remain</td>
+                    </tr>
 
-                </tr>
+                    <tr>
+                        <td>MOLDEO</td>
+                        <td>
+                            <?php echo $filas['moldeo'] ?>
+                        </td>
 
-                <?php echo "<a href='editar.php?id=" . $filas['id'] . "'>EDITAR</a>"; ?><br>
+                    </tr>
 
-                <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' onclick='return confirmar()'>ELIMINAR</a>"; ?>
-            
-            <?php
-            }
-            ?>
+                    <tr>
+                        <td>FUSION</td>
+                        <td>
+                            <?php echo $filas['fusion'] ?>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>FLOGGY</td>
+                        <td>
+                            <?php echo $filas['floggy'] ?>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>T.T.</td>
+                        <td>
+                            <?php echo $filas['tratamientos'] ?>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>INSPECCION</td>
+                        <td>
+                            <?php echo $filas['inspeccion'] ?>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>FINISHING</td>
+                        <td>
+                            <?php echo $filas['finishing'] ?>
+                        </td>
+
+                    </tr>
+
+                    <tr>
+                        <td>SCANNER</td>
+                        <td>
+                            <?php echo $filas['cmm'] ?>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                ?>
             </tbody>
         </table>
+    </div>
     <?php
     mysqli_close($conexion);
     ?>
