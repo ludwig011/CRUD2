@@ -1,5 +1,6 @@
 <html>
 
+
 <head>
     <title>PRUEBAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
@@ -18,6 +19,8 @@
             return confirm('Estas seguro? se eliminaran los datos');
         }
     </script>
+    <link href="css/all.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/all.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
