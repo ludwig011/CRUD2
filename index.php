@@ -24,6 +24,44 @@
     <link href="css/all.min.css" rel="stylesheet">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
+         /* The Modal (background) */
+         .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
         .table-responsive {
             height: 100%;
             overflow: scroll;
@@ -72,11 +110,96 @@
 <body>
     <h2 class="text-center">LISTADO DE PRUEBAS</h2><br>
     <div class="col-auto">
-        <a href="agregar.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"><i
-                class="fa-solid fa-circle-plus"></i>
-            AGREGAR
-            PRUEBA
-        </a>
+        <!-- <a href="agregar.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
+            <i class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA
+        </a> -->
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn"><i class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            
+            <?php
+    if (isset($_POST['enviar'])) {
+        $pieza = $_POST['pieza'];
+        $colada = $_POST['colada'];
+        $dueno = $_POST['dueno'];
+        $almas = $_POST['almas'];
+        $moldeo = $_POST['moldeo'];
+        $fusion = $_POST['fusion'];
+        $floggy = $_POST['floggy'];
+        $tratamientos = $_POST['tratamientos'];
+        $inspeccion = $_POST['inspeccion'];
+        $finishing = $_POST['finishing'];
+        $cmm = $_POST['cmm'];
+
+        include("conexion.php");
+        $sql = "insert into zonas(pieza,colada,dueno,almas,moldeo,fusion,floggy,tratamientos,inspeccion,finishing,cmm)
+    values( '" . $pieza . "', '" . $colada . "', '" . $dueno . "', '" . $almas . "', 
+    '" . $moldeo . "', '" . $fusion . "', '" . $floggy . "', '" . $tratamientos . "', '" . $inspeccion . "', 
+    '" . $finishing . "', '" . $cmm . "')";
+
+        $resultado = mysqli_query($conexion, $sql);
+
+        if ($resultado) {
+
+            echo "<script language='JavaScript'>
+        alert('Los datos fueron ingresados correctamente a la BD');
+        location.assign('index.php');
+        </script>
+        ";
+        } else {
+            echo "<script language='JavaScript'>
+        alert('ERROR: Los datos NO fueron ingresados 
+        correctamente a la BD');
+        location.assign('index.php');
+        </script>";
+        }
+        mysqli_close($conexion);
+
+    } else {
+        ?>
+
+        <h1>AGREGAR NUEVA PRUEBA </h1>
+        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+            <label> Pieza: </label>
+            <input type="varchar(100)" name="pieza"><br>
+            <label> colada: </label>
+            <input type="int(5)" name="colada"><br>
+            <label> dueno: </label>
+            <input type="text" name="dueno"><br>
+            <label> Almas: </label>
+            <input type="varchar(100)" name="almas"><br>
+            <label> Moldeo: </label>
+            <input type="varchar(100)" name="moldeo"><br>
+            <label> Fusion: </label>
+            <input type="varchar(100)" name="fusion"><br>
+            <label> Floggy: </label>
+            <input type="varchar(100)" name="floggy"><br>
+            <label> Tratamientos Termicos: </label>
+            <input type="varchar(100)" name="tratamientos"><br>
+            <label> Inspeccion: </label>
+            <input type="varchar(100)" name="inspeccion"><br>
+            <label> Finishing: </label>
+            <input type="varchar(100)" name="finishing"><br>
+            <label> CMM: </label>
+            <input type="varchar(100)" name="cmm"><br>
+            <input type="submit" name="enviar" value="AGREGAR">
+            <a href="index.php"> REGRESAR</a>
+        </form>
+        <?php
+    }
+    ?>
+            
+        </div>
+
+        </div>
+        
     </div>
     <div class="container">
         <?php
@@ -188,3 +311,31 @@
 
 
 </html>
+
+<script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function() {
+        modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+        modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+        }
+    </script>
