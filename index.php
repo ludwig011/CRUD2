@@ -1,7 +1,10 @@
 <html>
-
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PRUEBAS</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -11,40 +14,62 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
+    </script>
     <script type="text/javascript">
         function confirmar() {
             return confirm('Estas seguro? se eliminaran los datos');
-        }
-    </script>
-    <link href="css/all.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/all.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        }</script>
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+
+    <script src="js/bootstrap.min.js"></script>
     <style type="text/css">
-         /* The Modal (background) */
-         .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1; /* Sit on top */
+        .titulo {
+            text-align: left;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            font-family: Arial Black;
+            font-weight: bold;
+            font-size: 30px;
+            color: black;
+            text-shadow: 0 1px 0 #ddd, 0 2px 0 #ccc, 0 3px 0 #bbb, 0 4px 0 #aaa, 0 5px 0 #acacac,
+                0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3),
+                0 3px 5px rgba(0, 0, 0, 0.2), 0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+                0 20px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
             left: 0;
             top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgb(0,0,0); /* Fallback color */
-            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
         }
 
         /* Modal Content/Box */
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto; /* 15% from the top and centered */
+            margin: 15% auto;
+            /* 15% from the top and centered */
             padding: 20px;
             border: 1px solid #888;
-            width: 80%; /* Could be more or less, depending on screen size */
+            width: 80%;
+            /* Could be more or less, depending on screen size */
         }
 
         /* The Close Button */
@@ -108,103 +133,101 @@
 </head>
 
 <body>
-    <h2 class="text-center">LISTADO DE PRUEBAS</h2><br>
+    <h2 class="titulo text-center">LISTADO DE PRUEBAS</h2><br>
     <div class="col-auto">
-        <!-- <a href="agregar.php" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">
-            <i class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA
-        </a> -->
 
         <!-- Trigger/Open The Modal -->
-        <button id="myBtn"><i class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA</button>
+        <button id="myBtn" class="btn-primary btn-lg active" role="button" aria-pressed="true"><i
+                class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA</button>
 
         <!-- The Modal -->
         <div id="myModal" class="modal">
 
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            
-            <?php
-    if (isset($_POST['enviar'])) {
-        $pieza = $_POST['pieza'];
-        $colada = $_POST['colada'];
-        $dueno = $_POST['dueno'];
-        $almas = $_POST['almas'];
-        $moldeo = $_POST['moldeo'];
-        $fusion = $_POST['fusion'];
-        $floggy = $_POST['floggy'];
-        $tratamientos = $_POST['tratamientos'];
-        $inspeccion = $_POST['inspeccion'];
-        $finishing = $_POST['finishing'];
-        $cmm = $_POST['cmm'];
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
 
-        include("conexion.php");
-        $sql = "insert into zonas(pieza,colada,dueno,almas,moldeo,fusion,floggy,tratamientos,inspeccion,finishing,cmm)
+                <?php
+                if (isset($_POST['enviar'])) {
+                    $pieza = $_POST['pieza'];
+                    $colada = $_POST['colada'];
+                    $dueno = $_POST['dueno'];
+                    $almas = $_POST['almas'];
+                    $moldeo = $_POST['moldeo'];
+                    $fusion = $_POST['fusion'];
+                    $floggy = $_POST['floggy'];
+                    $tratamientos = $_POST['tratamientos'];
+                    $inspeccion = $_POST['inspeccion'];
+                    $finishing = $_POST['finishing'];
+                    $cmm = $_POST['cmm'];
+
+                    include("conexion.php");
+                    $sql = "insert into zonas(pieza,colada,dueno,almas,moldeo,fusion,floggy,tratamientos,inspeccion,finishing,cmm)
     values( '" . $pieza . "', '" . $colada . "', '" . $dueno . "', '" . $almas . "', 
     '" . $moldeo . "', '" . $fusion . "', '" . $floggy . "', '" . $tratamientos . "', '" . $inspeccion . "', 
     '" . $finishing . "', '" . $cmm . "')";
 
-        $resultado = mysqli_query($conexion, $sql);
+                    $resultado = mysqli_query($conexion, $sql);
 
-        if ($resultado) {
+                    if ($resultado) {
 
-            echo "<script language='JavaScript'>
+                        echo "<script language='JavaScript'>
         alert('Los datos fueron ingresados correctamente a la BD');
         location.assign('index.php');
         </script>
         ";
-        } else {
-            echo "<script language='JavaScript'>
+                    } else {
+                        echo "<script language='JavaScript'>
         alert('ERROR: Los datos NO fueron ingresados 
         correctamente a la BD');
         location.assign('index.php');
         </script>";
-        }
-        mysqli_close($conexion);
+                    }
+                    mysqli_close($conexion);
 
-    } else {
-        ?>
+                } else {
+                    ?>
 
-        <h1>AGREGAR NUEVA PRUEBA </h1>
-        <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-            <label> Pieza: </label>
-            <input type="varchar(100)" name="pieza"><br>
-            <label> colada: </label>
-            <input type="int(5)" name="colada"><br>
-            <label> dueno: </label>
-            <input type="text" name="dueno"><br>
-            <label> Almas: </label>
-            <input type="varchar(100)" name="almas"><br>
-            <label> Moldeo: </label>
-            <input type="varchar(100)" name="moldeo"><br>
-            <label> Fusion: </label>
-            <input type="varchar(100)" name="fusion"><br>
-            <label> Floggy: </label>
-            <input type="varchar(100)" name="floggy"><br>
-            <label> Tratamientos Termicos: </label>
-            <input type="varchar(100)" name="tratamientos"><br>
-            <label> Inspeccion: </label>
-            <input type="varchar(100)" name="inspeccion"><br>
-            <label> Finishing: </label>
-            <input type="varchar(100)" name="finishing"><br>
-            <label> CMM: </label>
-            <input type="varchar(100)" name="cmm"><br>
-            <input type="submit" name="enviar" value="AGREGAR">
-            <a href="index.php"> REGRESAR</a>
-        </form>
-        <?php
-    }
-    ?>
-            
+                    <h1 class="titulo">AGREGAR NUEVA PRUEBA </h1>
+                    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                        <label> Pieza: </label>
+                        <input type="varchar(100)" name="pieza"><br>
+                        <label> colada: </label>
+                        <input type="int(5)" name="colada"><br>
+                        <label> dueno: </label>
+                        <input type="text" name="dueno"><br>
+                        <label> Almas: </label>
+                        <input type="varchar(100)" name="almas"><br>
+                        <label> Moldeo: </label>
+                        <input type="varchar(100)" name="moldeo"><br>
+                        <label> Fusion: </label>
+                        <input type="varchar(100)" name="fusion"><br>
+                        <label> Floggy: </label>
+                        <input type="varchar(100)" name="floggy"><br>
+                        <label> Tratamientos Termicos: </label>
+                        <input type="varchar(100)" name="tratamientos"><br>
+                        <label> Inspeccion: </label>
+                        <input type="varchar(100)" name="inspeccion"><br>
+                        <label> Finishing: </label>
+                        <input type="varchar(100)" name="finishing"><br>
+                        <label> CMM: </label>
+                        <input type="varchar(100)" name="cmm"><br>
+                        <input type="submit" name="enviar" value="AGREGAR">
+                        <a href="index.php"> REGRESAR</a>
+                    </form>
+                    <?php
+                }
+                ?>
+
+            </div>
+
         </div>
 
-        </div>
-        
     </div>
     <div class="container">
         <?php
         include("conexion.php");
-        $sql = "SELECT * FROM `zonas`;";
+        $sql = "SELECT * FROM `zonas`ORDER BY id DESC";
         $resultado = mysqli_query($conexion, $sql);
         while ($filas = mysqli_fetch_assoc($resultado)) {
             ?>
@@ -234,9 +257,17 @@
                                 <?php echo $filas['almas'] ?>
                             </td>
                             <td class="tg" rowspan="8">
-                                <?php echo "<a href='editar.php?id=" . $filas['id'] . "' class='btn btn-warning'><i class='fa-regular fa-pen-to-square'></i>EDITAR</a>"; ?><br><br>
 
-                                <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' class='btn btn-warning' onclick='return confirmar()'><i class='fa-solid fa-trash-can'></i>ELIMINAR</a>"; ?>
+
+
+                                <button type="button" class="btn btn-danger" data-toggle="modal"
+                                    data-target="#staticBackdrop<?php echo $filas['id']; ?>">
+                                    Modificar
+                                </button>
+
+
+                                <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' 
+                                class='btn btn-warning' onclick='return confirmar()'><i class='fa-solid fa-trash-can'></i>ELIMINAR</a>"; ?>
                             </td>
 
                         </tr>
@@ -294,17 +325,20 @@
                                 <?php echo $filas['cmm'] ?>
                             </td>
                         </tr>
+                        <?php include('modaleditar.php'); ?>
                     </tbody>
+
                 </table>
+
             </div>
 
             <?php
         }
         ?>
+
     </div>
-    <?php
-    mysqli_close($conexion);
-    ?>
+
+
 
 
 </body>
@@ -313,29 +347,29 @@
 </html>
 
 <script>
-        // Get the modal
-        var modal = document.getElementById("myModal");
+    // Get the modal
+    var modal = document.getElementById("myModal");
 
-        // Get the button that opens the modal
-        var btn = document.getElementById("myBtn");
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
 
-        // Get the <span> element that closes the modal
-        var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-        // When the user clicks on the button, open the modal
-        btn.onclick = function() {
+    // When the user clicks on the button, open the modal
+    btn.onclick = function () {
         modal.style.display = "block";
-        }
+    }
 
-        // When the user clicks on <span> (x), close the modal
-        span.onclick = function() {
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
         modal.style.display = "none";
-        }
+    }
 
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-        }
-    </script>
+    // When the user clicks anywhere outside of the modal, close it
+    //window.onclick = function (event) {
+      //  if (event.target == modal) {
+        //    modal.style.display = "none";
+        //}
+    //}
+</script>
