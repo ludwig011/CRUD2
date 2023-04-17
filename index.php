@@ -214,6 +214,36 @@
         <div id="myModal2" class="modal">
             <div class="modal-content">
                 <span class="close">&times;</span>
+
+                <h1 class="titulo">MODIFICAR DATOS</h1>
+
+                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                    <label> Pieza: </label>
+                    <input type="varchar(100)" name="pieza"><br>
+                    <label> colada: </label>
+                    <input type="int(5)" name="colada"><br>
+                    <label> dueno: </label>
+                    <input type="text" name="dueno"><br>
+                    <label> Almas: </label>
+                    <input type="varchar(100)" name="almas"><br>
+                    <label> Moldeo: </label>
+                    <input type="varchar(100)" name="moldeo"><br>
+                    <label> Fusion: </label>
+                    <input type="varchar(100)" name="fusion"><br>
+                    <label> Floggy: </label>
+                    <input type="varchar(100)" name="floggy"><br>
+                    <label> Tratamientos Termicos: </label>
+                    <input type="varchar(100)" name="tratamientos"><br>
+                    <label> Inspeccion: </label>
+                    <input type="varchar(100)" name="inspeccion"><br>
+                    <label> Finishing: </label>
+                    <input type="varchar(100)" name="finishing"><br>
+                    <label> CMM: </label>
+                    <input type="varchar(100)" name="cmm"><br>
+                    <input type="submit" name="enviar" value="AGREGAR">
+                    <a href="index.php"> REGRESAR</a>
+                </form>
+
             </div>
         </div>
 
@@ -347,10 +377,15 @@
     
     $(".btn-danger").on("click", function() {
         modal2.style.display = "block";
+        console.log(this.parentElement.parentElement);
+        var currentRow=$(this).closest("tr");
         
-        console.log(document.getElementsByClassName("btn-danger"));
-        console.log(document.getElementsByClassName("table-sm"))
-        console.log(document.getElementsByClassName("card"))
+        const pieza = currentRow.find("td:eq(0)").text();
+        const colada = currentRow.find("td:eq(1)").text();
+        const dueno = currentRow.find("td:eq(2)").text();
+        const almas = currentRow.find("td:eq(3)").text();
+        const almas_detalle = currentRow.find("td:eq(4)").text();
+
     });
     
     var btn = document.getElementById("myBtn");
