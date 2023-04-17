@@ -162,26 +162,14 @@
                     $cmm = $_POST['cmm'];
 
                     include("conexion.php");
-                    $sql = "insert into zonas(pieza,colada,dueno,almas,moldeo,fusion,floggy,tratamientos,inspeccion,finishing,cmm)
-    values( '" . $pieza . "', '" . $colada . "', '" . $dueno . "', '" . $almas . "', 
-    '" . $moldeo . "', '" . $fusion . "', '" . $floggy . "', '" . $tratamientos . "', '" . $inspeccion . "', 
-    '" . $finishing . "', '" . $cmm . "')";
+                    $sql = "insert into zonas(pieza,colada,dueno,almas,moldeo,fusion,floggy,tratamientos,inspeccion,finishing,cmm) values( '" . $pieza . "', '" . $colada . "', '" . $dueno . "', '" . $almas . "', '" . $moldeo . "', '" . $fusion . "', '" . $floggy . "', '" . $tratamientos . "', '" . $inspeccion . "', '" . $finishing . "', '" . $cmm . "')";
 
                     $resultado = mysqli_query($conexion, $sql);
 
                     if ($resultado) {
-
-                        echo "<script language='JavaScript'>
-        alert('Los datos fueron ingresados correctamente a la BD');
-        location.assign('index.php');
-        </script>
-        ";
+                        echo "<script language='JavaScript'> alert('Los datos fueron ingresados correctamente a la BD'); location.assign('index.php'); </script>";
                     } else {
-                        echo "<script language='JavaScript'>
-        alert('ERROR: Los datos NO fueron ingresados 
-        correctamente a la BD');
-        location.assign('index.php');
-        </script>";
+                        echo "<script language='JavaScript'> alert('ERROR: Los datos NO fueron ingresados correctamente a la BD'); location.assign('index.php'); </script>";
                     }
                     mysqli_close($conexion);
 
@@ -222,6 +210,13 @@
             </div>
 
         </div>
+
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+            </div>
+        </div>
+
 
     </div>
     <div class="container">
@@ -347,23 +342,33 @@
 </html>
 
 <script>
-    // Get the modal
     var modal = document.getElementById("myModal");
-
-    // Get the button that opens the modal
+    var modal2 = document.getElementById("myModal2");
+    
+    $(".btn-danger").on("click", function() {
+        modal2.style.display = "block";
+        
+        console.log(document.getElementsByClassName("btn-danger"));
+        console.log(document.getElementsByClassName("table-sm"))
+        console.log(document.getElementsByClassName("card"))
+    });
+    
     var btn = document.getElementById("myBtn");
 
-    // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
+    var span1 = document.getElementsByClassName("close")[1];
 
-    // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
     }
 
-    // When the user clicks on <span> (x), close the modal
+
     span.onclick = function () {
         modal.style.display = "none";
+    }
+
+    span1.onclick = function () {
+        modal2.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
@@ -372,4 +377,5 @@
         //    modal.style.display = "none";
         //}
     //}
+
 </script>
