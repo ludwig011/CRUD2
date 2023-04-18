@@ -219,27 +219,27 @@
 
                 <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
                     <label> Pieza: </label>
-                    <input type="varchar(100)" name="pieza"><br>
+                    <input id="pieza" type="varchar(100)" name="pieza"><br>
                     <label> colada: </label>
-                    <input type="int(5)" name="colada"><br>
+                    <input id="colada" type="int(5)" name="colada"><br>
                     <label> dueno: </label>
-                    <input type="text" name="dueno"><br>
+                    <input id="dueno" type="text" name="dueno"><br>
                     <label> Almas: </label>
-                    <input type="varchar(100)" name="almas"><br>
+                    <input id="almas" type="varchar(100)" name="almas"><br>
                     <label> Moldeo: </label>
-                    <input type="varchar(100)" name="moldeo"><br>
+                    <input id="moldeo" type="varchar(100)" name="moldeo"><br>
                     <label> Fusion: </label>
-                    <input type="varchar(100)" name="fusion"><br>
+                    <input id="fusion" type="varchar(100)" name="fusion"><br>
                     <label> Floggy: </label>
-                    <input type="varchar(100)" name="floggy"><br>
+                    <input id="floggy" type="varchar(100)" name="floggy"><br>
                     <label> Tratamientos Termicos: </label>
-                    <input type="varchar(100)" name="tratamientos"><br>
+                    <input id="tratamientos" type="varchar(100)" name="tratamientos"><br>
                     <label> Inspeccion: </label>
-                    <input type="varchar(100)" name="inspeccion"><br>
+                    <input id="inspeccion" type="varchar(100)" name="inspeccion"><br>
                     <label> Finishing: </label>
-                    <input type="varchar(100)" name="finishing"><br>
+                    <input id="finishing" type="varchar(100)" name="finishing"><br>
                     <label> CMM: </label>
-                    <input type="varchar(100)" name="cmm"><br>
+                    <input id="cmm" type="varchar(100)" name="cmm"><br>
                     <input type="submit" name="enviar" value="AGREGAR">
                     <a href="index.php"> REGRESAR</a>
                 </form>
@@ -377,14 +377,19 @@
     
     $(".btn-danger").on("click", function() {
         modal2.style.display = "block";
-        console.log(this.parentElement.parentElement);
+        // console.log(this.parentElement.parentElement);
         var currentRow=$(this).closest("tr");
         
-        const pieza = currentRow.find("td:eq(0)").text();
-        const colada = currentRow.find("td:eq(1)").text();
-        const dueno = currentRow.find("td:eq(2)").text();
-        const almas = currentRow.find("td:eq(3)").text();
-        const almas_detalle = currentRow.find("td:eq(4)").text();
+        const pieza = currentRow.find("td:eq(0)").text().replace(/\s/g, "");
+        const colada = currentRow.find("td:eq(1)").text().replace(/\s/g, "");
+        const dueno = currentRow.find("td:eq(2)").text().replace(/\s/g, "");
+        const almas = currentRow.find("td:eq(3)").text().replace(/\s/g, "");
+        const almas_detalle = currentRow.find("td:eq(5)").text().replace(/\s/g, "");
+        
+        document.getElementById("pieza").value = pieza;
+        document.getElementById("colada").value = colada;
+        document.getElementById("dueno").value = dueno;
+        document.getElementById("almas").value = almas;
 
     });
     
