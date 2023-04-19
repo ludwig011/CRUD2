@@ -206,48 +206,8 @@
                     <?php
                 }
                 ?>
-
-            </div>
-
-        </div>
-
-        <div id="myModal2" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-
-                <h1 class="titulo">MODIFICAR DATOS</h1>
-
-                <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-                    <label> Pieza: </label>
-                    <input id="pieza" type="varchar(100)" name="pieza"><br>
-                    <label> colada: </label>
-                    <input id="colada" type="int(5)" name="colada"><br>
-                    <label> dueno: </label>
-                    <input id="dueno" type="text" name="dueno"><br>
-                    <label> Almas: </label>
-                    <input id="almas" type="varchar(100)" name="almas"><br>
-                    <label> Moldeo: </label>
-                    <input id="moldeo" type="varchar(100)" name="moldeo"><br>
-                    <label> Fusion: </label>
-                    <input id="fusion" type="varchar(100)" name="fusion"><br>
-                    <label> Floggy: </label>
-                    <input id="floggy" type="varchar(100)" name="floggy"><br>
-                    <label> Tratamientos Termicos: </label>
-                    <input id="tratamientos" type="varchar(100)" name="tratamientos"><br>
-                    <label> Inspeccion: </label>
-                    <input id="inspeccion" type="varchar(100)" name="inspeccion"><br>
-                    <label> Finishing: </label>
-                    <input id="finishing" type="varchar(100)" name="finishing"><br>
-                    <label> CMM: </label>
-                    <input id="cmm" type="varchar(100)" name="cmm"><br>
-                    <input type="submit" name="enviar" value="AGREGAR">
-                    <a href="index.php"> REGRESAR</a>
-                </form>
-
             </div>
         </div>
-
-
     </div>
     <div class="container">
         <?php
@@ -285,10 +245,8 @@
 
 
 
-                                <button type="button" class="btn btn-danger" data-toggle="modal"
-                                    data-target="#staticBackdrop<?php echo $filas['id']; ?>">
-                                    Modificar
-                                </button>
+                                <?php echo "<a href='editar.php?id=" . $filas['id'] . "' 
+                                class='btn btn-warning'>Editar</a>"; ?>
 
 
                                 <?php echo "<a href='eliminar.php?id=" . $filas['id'] . "' 
@@ -377,32 +335,6 @@
 
     $(".btn-danger").on("click", function () {
         modal2.style.display = "block";
-        // console.log(this.parentElement.parentElement);
-        var currentRow = $(this).closest("tr");
-
-        const pieza = currentRow.find("td:eq(0)").text().replace(/\s/g, "");
-        const colada = currentRow.find("td:eq(1)").text().replace(/\s/g, "");
-        const dueno = currentRow.find("td:eq(2)").text().replace(/\s/g, "");
-        const almas = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const moldeo = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const fusion = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const floggy = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const tratamientos = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const inspeccion = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const finishing = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        const cmm = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
-        
-        document.getElementById("pieza").value = pieza;
-        document.getElementById("colada").value = colada;
-        document.getElementById("dueno").value = dueno;
-        document.getElementById("almas").value = almas;
-        document.getElementById("moldeo").value = moldeo;
-        document.getElementById("fusion").value = fusion;
-        document.getElementById("floggy").value = floggy;
-        document.getElementById("tratamientos").value = tratamientos;
-        document.getElementById("inspeccion").value = inspeccion;
-        document.getElementById("finishing").value = finishing;
-        document.getElementById("cmm").value = cmm;
     });
 
     var btn = document.getElementById("myBtn");
