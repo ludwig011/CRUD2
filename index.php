@@ -383,14 +383,26 @@
         const pieza = currentRow.find("td:eq(0)").text().replace(/\s/g, "");
         const colada = currentRow.find("td:eq(1)").text().replace(/\s/g, "");
         const dueno = currentRow.find("td:eq(2)").text().replace(/\s/g, "");
-        const almas = currentRow.find("td:eq(3)").text().replace(/\s/g, "");
-        const moldeo = currentRow.find("td:eq(3)").text().replace(/\s/g, "");
-
+        const almas = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const moldeo = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const fusion = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const floggy = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const tratamientos = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const inspeccion = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const finishing = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        const cmm = currentRow.find("td:eq(4)").text().replace(/\s/g, "");
+        
         document.getElementById("pieza").value = pieza;
         document.getElementById("colada").value = colada;
         document.getElementById("dueno").value = dueno;
         document.getElementById("almas").value = almas;
         document.getElementById("moldeo").value = moldeo;
+        document.getElementById("fusion").value = fusion;
+        document.getElementById("floggy").value = floggy;
+        document.getElementById("tratamientos").value = tratamientos;
+        document.getElementById("inspeccion").value = inspeccion;
+        document.getElementById("finishing").value = finishing;
+        document.getElementById("cmm").value = cmm;
     });
 
     var btn = document.getElementById("myBtn");
