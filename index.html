@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PRUEBAS</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="src/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function confirmar() {
+            return confirm('Estas seguro? se eliminaran los datos');
+        }</script>
+    <script src="js/bootstrap.min.js"></script>
+    <script scr="js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <h2 class="titulo text-center">LISTADO DE PRUEBAS</h2><br>
+    <div class="col-auto">
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn" class="btn-primary btn-lg active" role="button" aria-pressed="true"><i
+                class="fa-solid fa-circle-plus"></i>AGREGAR PRUEBA</button>
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+
+
+            </div>
+
+        </div>
+
+        <div id="myModal2" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+
+                <h1 class="titulo">MODIFICAR DATOS</h1>
+
+                <form action="" method="post">
+                    <label> Pieza: </label>
+                    <input id="pieza" type="varchar(100)" name="pieza"><br>
+                    <label> colada: </label>
+                    <input id="colada" type="int(5)" name="colada"><br>
+                    <label> dueno: </label>
+                    <input id="dueno" type="text" name="dueno"><br>
+                    <label> Almas: </label>
+                    <input id="almas" type="varchar(100)" name="almas"><br>
+                    <label> Moldeo: </label>
+                    <input id="moldeo" type="varchar(100)" name="moldeo"><br>
+                    <label> Fusion: </label>
+                    <input id="fusion" type="varchar(100)" name="fusion"><br>
+                    <label> Floggy: </label>
+                    <input id="floggy" type="varchar(100)" name="floggy"><br>
+                    <label> Tratamientos Termicos: </label>
+                    <input id="tratamientos" type="varchar(100)" name="tratamientos"><br>
+                    <label> Inspeccion: </label>
+                    <input id="inspeccion" type="varchar(100)" name="inspeccion"><br>
+                    <label> Finishing: </label>
+                    <input id="finishing" type="varchar(100)" name="finishing"><br>
+                    <label> CMM: </label>
+                    <input id="cmm" type="varchar(100)" name="cmm"><br>
+                    <input type="submit" name="enviar" value="AGREGAR">
+                    <!-- <a href="index.php"> REGRESAR</a> -->
+                </form>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="container">
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>
+
+<script src="src/js/index.js"></script>
