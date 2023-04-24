@@ -1,4 +1,5 @@
 <?php
+
     $dbname = "db";
     $dbuser = "root";
     $dbhost = "localhost";
@@ -6,5 +7,4 @@
 
     $conexion = mysqli_connect($dbhost,$dbuser,$dbpass,$dbname);
 
-    print_r($conexion);
 ?>

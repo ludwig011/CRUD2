@@ -48,9 +48,11 @@ $(document).ready(function () {
     const xhttp = new XMLHttpRequest();
 
     xhttp.onload = function () {
-        console.log(this.responseText);
+        const response = JSON.parse(this.response);
+        console.log(response);
+        console.log(typeof response);
     }
 
-    xhttp.open("GET", "http://localhost/crud2/src/php/conexion.php", true);
+    xhttp.open("GET", "http://localhost/crud2/src/php/getAllZonas.php", true);
     xhttp.send();
 })
