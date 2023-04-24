@@ -54,7 +54,8 @@
 
                 <h1 class="titulo">MODIFICAR DATOS</h1>
 
-                <form action="" method="post">
+                <form action="src/php/editar.php" method="post">
+                    <input id="id" name="id" type="hidden">
                     <label> Pieza: </label>
                     <input id="pieza" type="varchar(100)" name="pieza"><br>
                     <label> colada: </label>
@@ -78,7 +79,6 @@
                     <label> CMM: </label>
                     <input id="cmm" type="varchar(100)" name="cmm"><br>
                     <input type="submit" name="enviar" value="AGREGAR">
-                    <!-- <a href="index.php"> REGRESAR</a> -->
                 </form>
 
             </div>

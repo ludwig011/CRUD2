@@ -1,24 +1,5 @@
 var modal = document.getElementById("myModal");
 var modal2 = document.getElementById("myModal2");
-
-$(".btn-danger").on("click", function () {
-    modal2.style.display = "block";
-    // console.log(this.parentElement.parentElement);
-    var currentRow = $(this).closest("tr");
-
-    const pieza = currentRow.find("td:eq(0)").text().replace(/\s/g, "");
-    const colada = currentRow.find("td:eq(1)").text().replace(/\s/g, "");
-    const dueno = currentRow.find("td:eq(2)").text().replace(/\s/g, "");
-    const almas = currentRow.find("td:eq(3)").text().replace(/\s/g, "");
-    const almas_detalle = currentRow.find("td:eq(5)").text().replace(/\s/g, "");
-
-    document.getElementById("pieza").value = pieza;
-    document.getElementById("colada").value = colada;
-    document.getElementById("dueno").value = dueno;
-    document.getElementById("almas").value = almas;
-
-});
-
 var btn = document.getElementById("myBtn");
 
 var span = document.getElementsByClassName("close")[0];
@@ -37,13 +18,6 @@ span1.onclick = function () {
     modal2.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-//window.onclick = function (event) {
-//  if (event.target == modal) {
-//    modal.style.display = "none";
-//}
-//}
-
 $(document).ready(function () {
     const xhttp = new XMLHttpRequest();
 
@@ -53,6 +27,7 @@ $(document).ready(function () {
         for (let index = 0; index < array.length; index++) {
 
             const element = array[index];
+            const ID = element['id'];
             const pieza = element['pieza'];
             const colada = element['colada'];
             const dueno = element['dueno'];
@@ -63,13 +38,15 @@ $(document).ready(function () {
             const tratamientos = element['tratamientos'];
             const inspeccion = element['inspeccion'];
             const finishing = element['finishing'];
-            const scanner = "lorem ipsum";
+            const scanner = element['cmm'];
+            const modificar = element['id'];
+            const eliminar = element['id'];
 
-            const card = '<div class="card">' +
+            const card = '<div id="' + ID + '" class="card">' +
                 '<table class="table-sm table-hover table-striped table-dark">' +
                 '<tbody>' +
 
-                // table row 1
+                // table row
                 '<tr>' +
                 '<th class="header tg" scope="col">Pieza</th>' +
                 '<th class="header tg" scope="col">Colada</th>' +
@@ -79,7 +56,7 @@ $(document).ready(function () {
                 '<th class="header tg" scope="col">Acción</th>' +
                 '</tr>' +
 
-                // table row 2
+                // table row
                 '<tr>' +
                 '<td class="tg" rowspan="8">' + pieza + '</td>' +
                 '<td class="tg" rowspan="8">' + colada + '</td>' +
@@ -88,12 +65,12 @@ $(document).ready(function () {
 
                 //Botones modificar y eliminar
                 '<td class="tg" rowspan="8">' +
-                '<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Modificar</button>' +
-                '<a href="eliminar.php?id=" class="btn btn-warning" onclick="return confirmar()"><i class="fa-solid fa-trash-can"></i>ELIMINAR</a>' +
+                '<button onclick="modificarCard(' + modificar + ');" type="button" class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop">Modificar</button>' +
+                '<a onclick="eliminarCard(' + eliminar + ');" class="btn btn-warning" ><i class="fa-solid fa-trash-can"></i>ELIMINAR</a>' +
                 '</td>' +
                 '</tr>' +
 
-                // table row 3
+                // table row
                 '<tr><td>MOLDEO</td><td>' + moldeo + '</td></tr>' +
                 // table row
                 '<tr><td>FUSION</td><td>' + fusion + '</td></tr>' +
@@ -112,14 +89,81 @@ $(document).ready(function () {
                 '</table>' +
                 '</div>';
 
-            const cardContainer = document.getElementById("cardContainer");
-            cardContainer.innerHTML += (card);
+            document.getElementById("cardContainer").innerHTML += (card);
 
         }
-
 
     }
 
     xhttp.open("GET", "http://localhost/crud2/src/php/getAllZonas.php", true);
     xhttp.send();
 })
+
+function modificarCard(params) {
+    const card = document.getElementById(params);
+    const array = (card.getElementsByTagName("tr"));
+
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index].cells;
+        const row = index;
+
+        for (let index = 0; index < element.length; index++) {
+
+            if (row === 1) {
+                pieza = element[0].innerHTML;
+                colada = element[1].innerHTML;
+                dueno = element[2].innerHTML;
+                almas = element[4].innerHTML;
+            }
+
+            if (row === 2) {
+                moldeo = element[1].innerHTML;
+            }
+
+            if (row === 3) {
+                fusion = element[1].innerHTML;
+            }
+
+            if (row === 4) {
+                floggy = element[1].innerHTML;
+            }
+
+            if (row === 5) {
+                tratamientos = element[1].innerHTML;
+            }
+
+            if (row === 6) {
+                inspeccion = element[1].innerHTML;
+            }
+
+            if (row === 7) {
+                finishing = element[1].innerHTML;
+            }
+
+            if (row === 8) {
+                cmm = element[1].innerHTML;
+            }
+
+        }
+    }
+
+    modal2.style.display = "block";
+
+    document.getElementById("id").value = card.id;
+    document.getElementById("pieza").value = pieza;
+    document.getElementById("colada").value = colada;
+    document.getElementById("dueno").value = dueno;
+    document.getElementById("almas").value = almas;
+    document.getElementById("moldeo").value = moldeo;
+    document.getElementById("fusion").value = fusion;
+    document.getElementById("floggy").value = floggy;
+    document.getElementById("tratamientos").value = tratamientos;
+    document.getElementById("inspeccion").value = inspeccion;
+    document.getElementById("finishing").value = finishing;
+    document.getElementById("cmm").value = cmm;
+
+}
+
+function eliminarCard(params) {
+    console.log(params);
+}
