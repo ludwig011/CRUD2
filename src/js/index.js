@@ -18,6 +18,7 @@ span1.onclick = function () {
     modal2.style.display = "none";
 }
 
+//READ
 $(document).ready(function () {
     const xhttp = new XMLHttpRequest();
 
@@ -99,6 +100,7 @@ $(document).ready(function () {
     xhttp.send();
 })
 
+//UPDATE
 function modificarCard(params) {
     const card = document.getElementById(params);
     const array = (card.getElementsByTagName("tr"));
@@ -164,6 +166,7 @@ function modificarCard(params) {
 
 }
 
+//DELETE
 function eliminarCard(params) {
     console.log(params);
 }
